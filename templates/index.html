@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head> {% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a class="active" href="/" method="GET">Home</a> <br>
+        <a href="addcontact/">Add Contact</a>
+
+        <div style="padding-left:16px">
+            {% for name in phonebook %}
+            <form action="search/" method="GET"> {% endfor %}
+                <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search.." name="search" value={{search_input}}>
+            </form>
+
+            {% csrf_token %} {% for list in phonebook %}
+            <tr><br>
+                <br>
+                <td> Name :- {{ list.name }} </td> <br>
+                <td> Contact Number :- {{ list.contactnum }}</td> <br>
+                <a href="delete/{{list.id}}">Delete</a>
+                <a href="updatecontact/{{list.id}} " method="get">Update</a>
+                </form>
+                <br>
+
+                <br>
+        </div>
+
+
+        </tr>
+
+
+    </div>
+    </div>
+    {% endfor %}
+
+</body>
+
+
+</html>{% endblock content %}
